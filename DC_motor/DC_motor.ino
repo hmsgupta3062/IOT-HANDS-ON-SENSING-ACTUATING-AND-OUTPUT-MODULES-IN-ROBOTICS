@@ -10,8 +10,8 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   
-  digitalWrite(2, HIGH); // Set the digital pin 2 in HIGH state
+  digitalWrite(3, HIGH); // Set the digital pin 2 in HIGH state
   delay(3000); // Waits for 3000 microseconds
-  digitalWrite(2, LOW); // Set the digital pin 2 in LOW state
+  digitalWrite(3, LOW); // Set the digital pin 2 in LOW state
   delay(1500); // Waits for 1500 microseconds
 }
