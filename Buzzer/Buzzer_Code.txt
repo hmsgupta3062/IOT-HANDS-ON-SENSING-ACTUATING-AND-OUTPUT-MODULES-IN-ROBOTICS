@@ -1,0 +1,19 @@
+#define buzzer_pin 10 // Define variable to store the digital pin number at which the buzzer is connected to the arduino
+
+void setup() {
+  // put your setup code here, to run once:
+  
+  pinMode(buzzer_pin, OUTPUT); // Sets the buzzer_pin as output
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  Serial.println("Buzzer is active"); // Print the status on serial port
+  digitalWrite(buzzer_pin, HIGH); // Sets the buzzer_pin as logic HIGH
+  delay(1000); // Wait for 1000 milliseconds
+  Serial.println("Buzzer stopped"); // Print the status on serial port
+  digitalWrite(buzzer_pin, LOW); // Sets the buzzer_pin as logic LOW
+  delay(1000); // Wait for 1000 milliseconds
+}

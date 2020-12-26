@@ -1,0 +1,23 @@
+#include <MQ2.h> // Include the MQ2 library
+#define sensor_pin A0 // Define a variable to store the analog pin number at which the sensor is connected to the arduino
+
+MQ2 mq2(sensor_pin); // Declare an object of class MQ2
+int lpg = 0; // Initialise variable to store sensor output value
+int co = 0; // Initialise variable to store sensor output value
+int smoke = 0; // Initialise variable to store sensor output value
+
+void setup(){
+  // put your setup code here, to run once:
+
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+  mq2.begin(); // Initialise object mq2
+}
+void loop(){
+  // put your main code here, to run repeatedly:
+
+  float* values = mq2.read(true); // Set it false if you don't want to print the results on serial port
+  lpg = mq2.readLPG(); // Read the sensor output
+  co = mq2.readCO(); // Read the sensor output
+  smoke = mq2.readSmoke(); // Read the sensor output
+  delay(1000); // Waits for 1000 milliseconds before accessing the sensor again
+}

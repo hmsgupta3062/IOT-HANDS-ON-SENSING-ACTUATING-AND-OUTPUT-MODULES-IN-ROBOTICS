@@ -1,0 +1,22 @@
+#define sensor_pin A0 // Define a variable to store the analog pin number at which the sensor is connected to the arduino
+#define led_pin 3 // Define a variable to store the digital pin number at which the led is connected to the arduino
+
+int out = 0; // Initialise variable to store sensor output value
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(sensor_pin, INPUT); // Sets the sensor_pin as input
+  pinMode(led_pin, OUTPUT); // Sets the led_pin as output
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  out = analogRead(sensor_pin); // Read the sensor output at sensor_pin
+  out = map(out, 900, 1023, 0, 255); // Bounds the sensor analog value 'out' from range 900-1023 to range 0-255
+  Serial.println(out); // Print the results on serial port
+  analogWrite(led_pin, out); // Sets the led_pin with PWM equal to 'out'
+  delay(20); // Waits for 20 milliseconds before accessing the sensor again
+}

@@ -1,0 +1,19 @@
+#include "dht.h" // Include the dht library
+#define sensor_pin 2 // Define a variable to store the digital pin number at which the sensor is connected to the arduino
+
+dht dht; // Declare an object of class dht
+
+void setup(){
+  // put your setup code here, to run once:
+  
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+  pinMode(sensor_pin, INPUT); // Sets the sensor_pin as input
+}
+ 
+void loop(){
+  // put your main code here, to run repeatedly:
+  
+  dht.read11(sensor_pin); // Read the sensor output at sensor_pin
+  Serial.println("Humidity = " + String(dht.humidity) + "%\nTemperature = " + String(dht.temperature) + " DegC\n"); // Print the results on serial port
+  delay(3000); // Wait for 3000 milliseconds before accessing the sensor again 
+}

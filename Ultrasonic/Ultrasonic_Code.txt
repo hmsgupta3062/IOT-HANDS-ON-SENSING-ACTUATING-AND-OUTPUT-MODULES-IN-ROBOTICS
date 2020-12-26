@@ -1,0 +1,27 @@
+#define trig_pin 10 // Define a variable to store the digital pin number at which the trigger pin is connected to the arduino
+#define echo_pin 9 // Define a variable to store the digital pin number at which the echo pin is connected to the arduino
+
+double duration; // Initialise variable to store duration of ultrasonic wave
+double distance; // Initialise variable to store distance of target object
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(trig_pin, OUTPUT); // Sets the trig_pin as output
+  pinMode(echo_pin, INPUT); // Sets the echo_pin as input 
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  digitalWrite(trig_pin, LOW); // Reset the trig_pin
+  delayMicroseconds(2); // Waits for 2 milliseconds
+  digitalWrite(trig_pin, HIGH); // Sets the trig_pin as logic HIGH
+  delayMicroseconds(10); // Waits for 10 milliseconds
+  digitalWrite(trig_pin, LOW); // Sets the trig_pin as logic LOW 
+  duration = pulseIn(echo_pin, HIGH); // Reads the echo_pin to know the duration
+  distance = (duration * 0.0343) / 2; // Compute the distance using duration
+  Serial.println("Distance: " + String(distance) + "cm\n"); // Print the results on serial port
+  delay(1000); // Waits for 1000 milliseconds before accessing the sensor again
+}

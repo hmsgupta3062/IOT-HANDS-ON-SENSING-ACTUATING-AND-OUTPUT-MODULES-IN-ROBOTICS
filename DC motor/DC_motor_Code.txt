@@ -1,0 +1,17 @@
+void setup() {
+  // put your setup code here, to run once:
+  
+  pinMode(2, OUTPUT); // Sets the pin 2 as output
+  pinMode(3, OUTPUT); // Sets the pin 3 as output
+  digitalWrite(2, LOW); // Sets the pin 2 as logic LOW initially
+  digitalWrite(3, LOW); // Sets the pin 3 as logic LOW initially
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  digitalWrite(3, HIGH); // Sets the pin 3 as logic HIGH
+  delay(3000); // Waits for 3000 milliseconds
+  digitalWrite(3, LOW); // Sets the pin 3 as logic LOW
+  delay(1500); // Waits for 1500 milliseconds
+}

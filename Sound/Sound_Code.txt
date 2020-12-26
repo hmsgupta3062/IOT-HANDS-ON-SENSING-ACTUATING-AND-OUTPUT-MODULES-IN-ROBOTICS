@@ -1,0 +1,34 @@
+#define analog_pin A0 // Define a variable to store the analog pin number at which the sensor is connected to the arduino
+#define digital_pin 2 // Define a variable to store the digital pin number at which the sensor is connected to the arduino
+#define led_pin LED_BUILTIN // Define a variable to store the digital pin number at which the led is connected to the arduino
+
+int out = 0; // Initialise variable to store sensor output value
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(digital_pin, INPUT); // Sets the digital_pin as input
+  pinMode(analog_pin, INPUT); // Sets the analog_pin as input
+  pinMode(led_pin, OUTPUT); // Sets the led_pin as output
+  Serial.begin(9600); // Initialize the serial port at baud rate of 9600
+}
+ 
+void loop () {
+  // put your main code here, to run repeatedly:
+
+  if (digitalRead(digital_pin) == LOW) // Check if the sensor value is equal to logic LOW
+  {
+    // Block of code executed if above condition is true
+    digitalWrite(led_pin, HIGH); // Sets the led_pin as logic HIGH
+    Serial.println("LOUD!!! LOUD!!! LOUD!!!"); // Print the status on serial port
+  }
+  else
+  {
+    // Else the following block of code is executed
+    digitalWrite(led_pin, LOW); // Sets the led_pin as logic LOW
+    Serial.println("Peace and Calm"); // Print the status on serial port
+  }
+  out = analogRead(analog_pin); // Read the sensor output at analog_pin
+  Serial.println("Analog value : " + String(out) + "\n"); // Print the results on serial port
+  delay(100); // Wait for 100 milliseconds before accessing the sensor again 
+}

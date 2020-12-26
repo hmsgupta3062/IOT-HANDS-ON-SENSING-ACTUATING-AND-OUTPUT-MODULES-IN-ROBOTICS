@@ -1,0 +1,16 @@
+#define laser_pin 10 // Define variable to store the digital pin number at which the laser is connected to the arduino
+
+void setup() {
+  // put your setup code here, to run once:
+       
+  pinMode(laser_pin, OUTPUT); // Initialize laser_pin as output
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  digitalWrite(laser_pin, HIGH); // Set the laser_pin at HIGH state
+  delay(3000); // Wait for 3000 milliseconds
+  digitalWrite(laser_pin, LOW); // Set the laser_pin at LOW state
+  delay(1000); // Wait for 1000 milliseconds
+}
